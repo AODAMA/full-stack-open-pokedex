@@ -33,8 +33,8 @@ jobs:
       - name: Déploiement sur Vercel
         uses: amondnet/vercel-action@v20
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}  # 'token' → 'vercel-token'
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}  # Correct input name
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}  # Ajoute aussi ce secret
-          scope: aodama  # Ton nom d'utilisateur Vercel
-          prod: true  # Permet de déployer en production
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-name: "mon-projet"  # Facultatif mais peut être utile
+          prod: true  # Déployer en production
