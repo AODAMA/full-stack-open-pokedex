@@ -1,0 +1,31 @@
+name: Test et Déploiement
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v3
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Installer les dépendances
+        run: npm install
+
+      - name: Exécuter les tests
+        run: npm test
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Déploiement sur Vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
